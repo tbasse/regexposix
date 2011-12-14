@@ -63,11 +63,12 @@
     },
     replaceCallback: function(regex, string, cb) {
       var ro = _regexToObject(regex);
-      var s = String(string).match(_replacePosix('/'+ro.string+'/'));
+      var s = String(string).match(_replacePosix('/'+ro.string+'/g'));
       if( s ) {
-        var r = cb(s[0]);
-        regex = new RegExp(_regexToClassString(_replacePosix('/'+ro.string+'/')), ro.modifier);
-        return string.replace(regex, r);
+        for( var l in s ) {
+          string = string.replace(s[l], cb(s[l]));
+        }
+        return string;
       }
       return string;
     },
