@@ -3,16 +3,20 @@ $(document).ready(function() {
   module(".match()");
 
   test("", function() {
-    same(regexposix.match(/[:alnum:]/, 'abcd'), ['a'], 'match single alphanumeric');
-    same(regexposix.match(/[:alnum:]/, '1234'), ['1'], 'match single alphanumeric');
-    same(regexposix.match(/[:alnum:]+/, 'abcd1234'), ['abcd1234'], 'match mutiple alphanumeric');
-    same(regexposix.match(/^[:alnum:]+$/, 'abcd1234-'), null, 'fail matching only alphanumeric');
-
-    same(regexposix.match(/[:alpha:]/, 'abcd'), ['a'], 'match single alpha');
-    same(regexposix.match(/[:alpha:]/, '1234'), null, 'fail matching on only digits');
-    same(regexposix.match(/[:alpha:]+/, 'abcd1234'), ['abcd'], 'match multiple alpha');
-    same(regexposix.match(/^[:alpha:]+$/, 'abcd'), ['abcd'], 'match if only alphanumeric');
-    same(regexposix.match(/^[:alpha:]+$/, 'abcd1234'), null, 'fail match if only alphanumeric');
+    same(regexposix.match(/[:alnum:]/, 'abcde'), ['a'], 'single alnum in abcde');
+    same(regexposix.match(/[:alnum:]+/, 'abcde'), ['abcde'], 'multiple alnum in abcde');
+    same(regexposix.match(/[:alnum:]/, 'ab123'), ['a'], 'multiple alnum in ab123');
+    same(regexposix.match(/[:alnum:]+/, 'ab123'), ['ab123'], 'multiple alnum in ab123');
+    same(regexposix.match(/[:alnum:]/, '!§$%&._,'), null, 'single alnum in !§$%&._,');
+    same(regexposix.match(/[:alnum:]+/, '!§$%&._,'), null, 'multiple alnum in !§$%&._,');
+    same(regexposix.match(/^[:alnum:]+$/, 'ab123'), ['ab123'], 'match if completely alnum on ab123');
+    same(regexposix.match(/^[:alnum:]+$/, 'ab.23'), null, 'match if completely alnum on ab-23');
+    
+    same(regexposix.match(/[:alpha:]/, 'abcd'), ['a'], 'single alpha in abcd');
+    same(regexposix.match(/[:alpha:]/, '1234'), null, 'single alpha in 1234');
+    same(regexposix.match(/[:alpha:]+/, 'abcd1234'), ['abcd'], 'multiple alpha in abcd1234');
+    same(regexposix.match(/^[:alpha:]+$/, 'abcd'), ['abcd'], 'match if only alpha on abcd');
+    same(regexposix.match(/^[:alpha:]+$/, 'abcd1234'), null, 'match if only alpha on abcd1234');
 
     same(regexposix.match(/[:blank:]/, 'ab cd'), [' '], 'match single alphanumeric');
     same(regexposix.match(/[:blank:]/, 'ab\tcd'), ['\t'], 'match single alphanumeric');
