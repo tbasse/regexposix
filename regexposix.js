@@ -44,18 +44,18 @@
       return String(string).match(_replacePosix(regex));
     },
     test: function(regex, string) {
-      return _replacePosix(regex).test(String(string)); 
+      return _replacePosix(regex).test(String(string));
     },
     replace: function(regex, string, replacement) {
       if( typeof string === 'string' ) {
-        return String(string).replace(_replacePosix(regex), replacement); 
+        return String(string).replace(_replacePosix(regex), replacement);
       }
       return string;
     },
     replaceInArray: function(regex, array, replacement) {
       if( Object.prototype.toString.call(array) === '[object Array]' ) {
         for( var i in array ) {
-          array[i] = String(array[i]).replace(_replacePosix(regex), replacement); 
+          array[i] = String(array[i]).replace(_replacePosix(regex), replacement);
         }
         return array;
       }
@@ -79,7 +79,7 @@
       return String(string).search(_replacePosix(regex));
     }
   };
-  
+
   // Export the for **Node.js** and **"CommonJS"**, with
   // backwards-compatibility for the old `require()` API. If we're not in
   // CommonJS, add `regexposix` to the global object.
@@ -97,5 +97,5 @@
     // Exported as a string, for Closure Compiler "advanced" mode.
     root['regexposix'] = rxp;
   }
-  
+
 })();
