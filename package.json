@@ -1,12 +1,12 @@
 {
   "name"          : "regexposix",
   "description"   : "Provides regular expression functions with POSIX character classes.",
-  "homepage"      : "https://github.com/tagedieb/regexposix.js",
+  "homepage"      : "https://github.com/tbasse/regexposix.js",
   "keywords"      : ["util", "functional", "regexp", "server", "client", "browser"],
   "author"        : "Thorsten Basse <himself@tagedieb.com>",
   "contributors"  : [],
   "dependencies"  : [],
-  "repository"    : {"type": "git", "url": "git://github.com/tagedieb/regexposix.git"},
+  "repository"    : {"type": "git", "url": "git://github.com/tbasse/regexposix.git"},
   "main"          : "regexposix.js",
   "version"       : "0.1"
 }
