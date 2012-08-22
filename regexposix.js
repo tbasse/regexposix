@@ -72,6 +72,17 @@
       }
       return string;
     },
+    replaceInArrayCallback: function(regex, array, cb) {
+      if( Object.prototype.toString.call(array) === '[object Array]' ) {
+        var ro = _regexToObject(regex);
+        for( var i in array ) {
+          var s = String(array[i]).match(_replacePosix('/'+ro.string+'/g'));
+          array[i] = String(array[i]).replace(_replacePosix(regex), cb(s));
+        }
+        return array;
+      }
+      return array;
+    },
     exec: function(regex, string) {
       return _replacePosix(regex).exec(String(str));
     },
